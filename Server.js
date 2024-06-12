@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const router = require('express')
 const cors = require('cors')
-// const uuid = require('uuid')
+const mongodb = require('mongodb')
 const bodyParser = require('body-parser')
 const payPal = require('paypal-rest-sdk');
 const ejs = require('ejs')
@@ -122,14 +122,15 @@ app.put('/AtualizarDados', async (req, res) => {
 })
 
 
-app.delete('/DeletarDados', async (req, res) => {
+app.delete('/:id', async (req, res) => {
     try {
-        const { id } = req.params
-        const dataModel = await DataModel.findByIdAndDelete(id)
+        const { id } = req.params.id
+        const dataModel = await DataModel.deleteOne({_id:new mongodb.ObjectId(req.params.id)})
         if (!dataModel) {
             res.status(404).json({ message: ' não foi possivel fazer o delete' })
         }
         res.status(200).json(dataModel)
+        res.send('apagou')
     } catch (error) {
         res.status(500).json({ message: error.message })
     }

@@ -1,35 +1,45 @@
 const mongoose = require('mongoose')
 const DataSchema = new mongoose.Schema({
 
-    id: {
-        type: Number,
-        required : true
-    },
-    Nome: {
+    nome: {
         type: String,
-        required : true
+        required: true
     },
-    descriçãoCurta: {
-        type: String,
-        required : true
-    },
-    descriçãoLonga: {
-        type: String,
-        required : true
-    },
-    email: {
-        type: String,
-        required : true
-    },
-    Pais: {
-        type: String,
-        required : true
-    },
-    city: {
-        type: String,
-        required : true
-    }
 
+    foto: {
+        type: String,
+        required: true
+    },
+
+    foto2: {
+        type: String,
+        required: true
+    },
+
+    foto3: {
+        type: String,
+        required: true
+    },
+
+    foto4: {
+        type: String,
+        required: true
+    },
+
+    foto5: {
+        type: String,
+        required: true
+    },
+
+    descricaoLonga: {
+        type: String,
+        required: true
+    },
+
+    descricaoCurta: {
+        type: String,
+        required: true
+    }
 },
     {
         timestamps: true
