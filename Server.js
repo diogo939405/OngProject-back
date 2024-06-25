@@ -101,10 +101,10 @@ app.post('/PostarDados', async (req, res) => {
 
 app.put('/AtualizarDados', async (req, res) => {
     try {
-        const { id } = req.params
+        const  id = req.body._id
         const dataModel = await DataModel.findByIdAndUpdate(id, req.body)
         if (!dataModel) {
-            res.status(404).json({ message: ' não foi possivel fazer o delete' })
+            res.status(404).json({ message: ' não foi possivel fazer o update' })
         }
         const updateDataModel = await DataModel.findById(id)
         res.status(200).json(updateDataModel)
@@ -117,7 +117,7 @@ app.put('/AtualizarDados', async (req, res) => {
 app.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params.id
-        const dataModel = await DataModel.deleteOne({_id:new mongodb.ObjectId(req.params.id)})
+        const dataModel = await DataModel.deleteOne({ _id: new mongodb.ObjectId(req.params.id) })
         if (!dataModel) {
             res.status(404).json({ message: ' não foi possivel fazer o delete' })
         }

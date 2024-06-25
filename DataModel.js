@@ -39,7 +39,13 @@ const DataSchema = new mongoose.Schema({
     descricaoCurta: {
         type: String,
         required: true
+    },
+
+    link: {
+        type: String,
+        required: true
     }
+
 },
     {
         timestamps: true
